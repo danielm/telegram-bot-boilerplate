@@ -2,13 +2,10 @@ from flask import request, make_response
 
 import telegram
 
-from app import app
+from app import app, bot
 from functools import wraps
 
-from app.credentials import CUSTOM_USERNAME
-from app.credentials import CUSTOM_PASSWORD
-from app.credentials import TOKEN
-from app.credentials import URL
+from app.credentials import TOKEN, URL, CUSTOM_USERNAME, CUSTOM_PASSWORD, bot_user_name
 
 from app.mastermind import get_response
 
@@ -33,7 +30,7 @@ def auth_required(f):
 @app.route('/')
 @auth_required
 def index():
-    return '.'
+    return "Running {}...".format(bot_user_name)
 
 #
 # Set Telegram webhook URL

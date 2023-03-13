@@ -2,3 +2,5 @@
 /venv/
 .DS_Store
 /tmp
+/.env
+__pycache__/

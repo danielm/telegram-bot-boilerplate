@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  web:
+    build: ./
+    restart: unless-stopped
+    container_name: ${PROJECT_NAME}
+    environment:
+      - FLASK_ENV=${FLASK_ENV:-development}
+      - BOT_TOKEN=${BOT_TOKEN}
+      - BOT_USER_NAME=${BOT_USER_NAME}
+      - CUSTOM_USERNAME=${CUSTOM_USERNAME}
+      - CUSTOM_PASSWORD=${CUSTOM_PASSWORD}
+    ports:
+      - "${HOST_PORT:-80}:5000"
+    networks:
+      - web
+
+networks:
+  web:
+    name: web
+    external: false
